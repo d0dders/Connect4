@@ -15,9 +15,17 @@ class Player {
     createTokens(num) {
         const tokens = []
         for(let i = 0; i < num; i++) {
-            tokens.push(new Token(i, this));
+            tokens.push(new Token(this, i));
         }
 
         return tokens;
+    }
+    
+    get unusedTokens() {
+        return this.tokens.filter(token => token.dropped = true);
+    }
+
+    get activeToken() {
+        return this.unusedTokens[0];
     }
 }

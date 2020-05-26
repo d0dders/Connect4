@@ -22,4 +22,11 @@ class Board {
 
         return spaces;
     }
+
+    /**
+     * Draws all the spaces on the board
+     */
+    drawHTMLBoard() {
+        this.spaces.forEach(column => column.forEach(space => space.drawSVGSpace()));
+    }
 }

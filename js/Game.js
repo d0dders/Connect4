@@ -14,4 +14,17 @@ class Game {
         const player2 = new Player("Player 2", 2, "#e59a13");
         return [player1, player2];
     }
+
+    /**
+     * Initialize game
+     */
+    startGame() {
+        this.board.drawHTMLBoard();
+        this.activePlayer.activeToken.drawHTMLToken();
+        this.ready = true;
+    }
+
+    get activePlayer() {
+        return this.players.find(player => player.active);
+    }
 }
