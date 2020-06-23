@@ -4,6 +4,7 @@ class Token {
         this.owner = owner;
         this.id = `token-${id}-${owner.id}`;
         this.dropped = false;
+        this.columnLocation = 0;
     }
 
     /**
@@ -19,6 +20,31 @@ class Token {
     }
 
     get htmlToken() {
-        return querySelector(`#${this.id}`);
+        return document.querySelector(`#${this.id}`);
+    }
+
+    /** 
+    * Gets left offset of html element.
+    * @return  {number}   Left offset of token object's htmlToken.
+    */
+    get offsetLeft() {
+        return this.htmlToken.offsetLeft;
+    }
+
+    /** 
+    * Moves html token one column to left.
+    */
+    moveLeft() {
+        if (this.columnLocation > 0) {
+            this.htmlToken.style.left = this.offsetLeft - 76;
+            this.columnLocation -= 1;
+        }
+    }
+
+    moveRight() {
+        if (this.columnLocation < 6) {
+            this.htmlToken.style.left = this.offsetLeft + 76;
+            this.columnLocation += 1;
+        }
     }
 }

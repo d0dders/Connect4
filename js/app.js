@@ -8,3 +8,7 @@ document.querySelector('#begin-game').addEventListener('click', function() {
     this.style.display = 'none';
     document.querySelector('#play-area').style.opacity = '1';
 });
+
+document.addEventListener('keydown', (e) => {
+    game.handleKeydown(e);
+});
