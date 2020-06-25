@@ -15,17 +15,23 @@ class Player {
     createTokens(num) {
         const tokens = []
         for(let i = 0; i < num; i++) {
-            tokens.push(new Token(this, i));
+            const token = new Token(this, i);
+            tokens.push(token);
         }
 
         return tokens;
     }
     
     get unusedTokens() {
-        return this.tokens.filter(token => token.dropped = true);
+        console.log(this.tokens);
+        return this.tokens.filter(token => token.dropped == false);
     }
 
     get activeToken() {
         return this.unusedTokens[0];
+    }
+
+    checkTokens() {
+        return this.tokens.length > 0 ? true : false;    
     }
 }

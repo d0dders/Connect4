@@ -21,4 +21,20 @@ class Space {
         svgSpace.setAttributeNS(null, "stroke", "none");
         document.getElementById("mask").appendChild(svgSpace);
     }
+
+    /**
+    * Updates space to reflect a token has been dropped into it.
+    * @param {Object} token - The dropped token
+    */
+    mark(token) {
+        this.token = token;
+    }
+
+    get owner() {
+        if (this.token === null) {
+            return null;
+        } else {
+            return this.token.owner;
+        }
+    }
 }
